@@ -6,8 +6,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build --env=stage",
-    "test": "ng test",
+    "postinstall": "npm run build",
     "lint": "ng lint",
     "e2e": "ng e2e"
   },
