@@ -1,0 +1,6 @@
+<div class="modal" (click)="executeOnClose()" *ngIf="visible" >
+  <div class="content" (click)="$event.stopPropagation()">
+    <div class="close-button ss-icon" (click)="executeOnClose()">&#x2421;</div>
+    <div ng-transclude></div>
+  </div>
+</div>

@@ -1,0 +1,367 @@
+$buttonDefault: #e5e8e6;
+$buttonPrimary: #00acec;
+$buttonDanger: #bd3434;
+
+$background: #e5e8e6;
+
+@mixin shadow {
+  box-shadow: 0 3px 8px #ccc;
+}
+
+@import './styles/reset';
+@import './styles/fonts';
+@import './styles/buttons';
+@import './styles/ngx-datatable';
+@import './styles/modal';
+@import './styles/forms';
+@import './styles/json-format';
+
+//datatable-header-cell.datatable-header-cell.sortable.resizeable{
+//  height:42px;
+//}
+
+.datatable-checkbox input[type='checkbox']:checked:before {
+  -webkit-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+  height: .5rem;
+  border-color: #00ACEC;
+  border-top-style: none;
+  border-right-style: none;
+}
+
+.object-list > li {
+  padding-top: 4vh;
+  padding-left: 20px;
+  padding-right: 10px;
+  position: relative;
+  cursor: pointer;
+
+  > div {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    line-height: 1.2;
+
+  }
+}
+
+.active{
+  background-color: #FFF;
+  padding-right: 0;
+}
+
+nav > ul > li > a {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background-color: #CCC;
+}
+
+section {
+  padding: 20px;
+  > div {
+    width: auto;
+  }
+}
+
+.sidenav {
+  background-color: white;
+  height: 100vh;
+  width: 300px;
+  display: block;
+  float: left;
+  overflow: hidden;
+  box-sizing: border-box;
+  user-select: none;
+}
+
+.selected {
+  border-radius: 3px;
+
+  &:before {
+    content: '▻';
+    font-family: SSGizmo;
+    color: #00ACEC;
+    position: absolute;
+    margin-left: -20px;
+    line-height: 22px;
+  }
+}
+
+.scroll {
+  overflow: auto;
+}
+
+.studio-styled-table {
+  .ngx-datatable {
+    height: auto;
+    overflow: auto;
+  }
+
+  .datatable-header{
+    font-weight: 700;
+    border-top: 1px solid #fafafa;
+    border-bottom: 1px solid #e0e0e0;
+    background: #ededed;
+    background: -webkit-gradient(linear,left top,left bottom,from(#ededed),to(#ebebeb));
+    background: -moz-linear-gradient(top,#ededed,#ebebeb);
+  }
+
+  &.ngx-datatable.material {
+    border-radius: 4px;
+    box-shadow: none;
+  }
+
+  &.ngx-datatable.material .empty-row {
+    padding: 1rem 1.2rem;
+  }
+
+  .datatable-header-cell-label {
+    font-weight: bold;
+    padding-bottom: 5px;
+  }
+  .datatable-body {
+    overflow-y: hidden !important;
+  }
+}
+
+.datatable-body-row {
+  &:hover {
+    background-color: rgba(205, 205, 205, 0.38) !important;
+    cursor: pointer;
+  }
+  &.active .datatable-row-group {
+    background-color: #b3b3b3 !important;
+    /*color: #666 !important;*/
+  }
+
+}
+
+
+* {
+  font-family: 'lato', sans-serif;
+}
+
+h1 {
+  font-size: 30px;
+  margin: 30px 0;
+  display: inline-block;
+  cursor: default;
+  user-select: none;
+}
+
+.to {
+  width: 25px !important;
+  margin-left: -75px;
+  margin-right: 40px;
+}
+
+.object-list > li > a {
+  background-color: #FAFAFA;
+  border-radius: 4px;
+  margin-bottom: 20px;
+  padding: 30px 20px;
+  box-sizing: border-box;
+  display: block;
+  position: relative;
+  @include shadow;
+  color: #7e7c7e;
+  height: 95px;
+
+  &:hover {
+    background-color: white;
+  }
+
+  span.ss-icon {
+    font-family: 'SSGizmo';
+    width: 65px;
+    height: 96px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    line-height: 105px;
+    text-align: center;
+    border-radius: 4px;
+  }
+  span > span {
+
+    &.eclipse-text {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: block;
+      width: 100%;
+    }
+
+    &:first-child {
+      display: block;
+      font-size: 11px;
+      padding-bottom: 20px;
+      margin-top: -5px;
+    }
+    &:last-child {
+      font-size: 20px;
+      text-align: left;
+    }
+    &.border-date {
+      border: 1px solid #7e7c7e;
+      border-radius: 4px;
+      padding: 10px 15px 5px 15px;
+      margin-bottom: 15px;
+      font-size: 12px;
+    }
+  }
+}
+.ngx-datatable.fixed-header .datatable-header .datatable-header-inner .datatable-header-cell{
+  border-right: 1px solid RGB(224, 204, 204);
+}
+.eclipse-text {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: block;
+  width: 100%;
+}
+
+// Create and detail page styles
+
+h2 {
+  font-size: 1.3em;
+  margin: 10px 0;
+}
+
+h3 {
+  margin: 15px 0 50px;
+  color: #666;
+}
+
+.graph {
+  width: 100%;
+}
+
+app-distribution-chart {
+  margin: 70px 0;
+}
+
+.datatable-body-cell {
+  font-size: 14px !important;
+}
+
+
+.social-icon {
+  background-image: url('http://n2.storied.co/assets/img/aggregator-icons-dark.svg');
+  width: 75px;
+  height: 75px;
+  background-repeat: no-repeat;
+  display: inline-block;
+  background-size: cover;
+  border-radius: 4px;
+  margin-bottom: 3px;
+  opacity: 0.3;
+}
+
+.social-tile {
+  height: 100px;
+  width: 100px;
+  border: 5px solid #CCC;
+  display: block;
+  padding: 7px 25px 30px 25px;
+  border-radius: 4px;
+  margin-bottom: 10px;
+
+  &:hover{
+    background-color: rgba(0,0,0,0.05);
+  }
+
+  .social-network {
+    margin-top: -10px;
+    color: #666;
+  }
+
+  .social-uid{
+    margin-top: 5px;
+    font-weight: bold;
+  }
+}
+
+.social-icon-add{
+  font-size: 75px;
+  opacity: 0.3;
+}
+
+.social-tile-add{
+  height: 100px;
+  width: 100px;
+  border: 5px dashed #CCC;
+  display: block;
+  padding: 7px 25px 30px 25px;
+  border-radius: 4px;
+  margin-bottom: 10px;
+
+  .add-network{
+    margin-top: -10px;
+    color: #666;
+  }
+}
+
+$numOfIcons: 14;
+
+.social-icon-facebook {
+  background-position: 0 0;
+}
+
+.social-icon-twitter {
+  background-position: 100% / $numOfIcons * 1 0;
+}
+
+.social-icon-instagram {
+  background-position: 100% / $numOfIcons * 2 0;
+}
+
+.social-icon-tumblr {
+  background-position: 100% / $numOfIcons * 3 0;
+}
+
+.social-icon-tables {
+  background-position: 100% / $numOfIcons * 4 0;
+}
+
+.social-icon-youtube {
+  background-position: 100% / $numOfIcons * 5 0;
+}
+
+.social-icon-rss {
+  background-position: 100% / $numOfIcons * 6 0;
+}
+
+.social-icon-google_drive {
+  background-position: 100% / $numOfIcons * 7 0;
+}
+
+.social-icon-storied {
+  background-position: 100% / $numOfIcons * 8 0;
+}
+
+.social-icon-wordpress {
+  background-position: 100% / $numOfIcons * 9 0;
+}
+
+.social-icon-google_calendar {
+  background-position: 100% / $numOfIcons * 10 0;
+}
+
+.social-icon-salesforce {
+  background-position: 100% / $numOfIcons * 11 0;
+}
+
+.social-icon-themoviedb {
+  background-position: 100% / $numOfIcons * 12 0;
+}
+
+.social-icon-brightcove {
+  background-position: 100% / $numOfIcons * 13 0;
+}
+
+.social-icon-csv {
+  background-position: 100% / $numOfIcons * 14 0;
+}

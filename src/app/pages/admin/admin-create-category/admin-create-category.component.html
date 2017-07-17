@@ -1,0 +1,12 @@
+<h1 class="h1-feed">Add category</h1>
+
+<div class="options-list">
+  <div class="feed-field label">
+    <label for="label">Name: </label>
+    <input #label type="text" placeholder="name" name="label" id="label" required>
+  </div>
+    <div class="action-button create-feed-button"
+         (click)="onSubmit(label.value)">
+      <span class="create-icon ss-icon">💾</span><span class="button-label">add</span>
+    </div>
+</div>
