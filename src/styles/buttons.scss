@@ -1,0 +1,184 @@
+.ss-icon {
+  font-family: 'SSGizmo';
+  padding: 15px;
+}
+
+.delete-form-icon {
+  margin-left: 60px;
+}
+
+.action-buttons {
+  float: right;
+  display: block;
+  padding: 18px 0;
+  width: auto;
+}
+
+.question-list > li {
+  position: relative;
+  cursor: pointer;
+  background-color: #f9f9f9;
+  padding: 20px 30px !important;
+  border-radius: 4px;
+  box-shadow: rgba(166, 166, 167, 0.35) 1px 1px;
+  margin: 12px 0;
+  color: #666;
+
+  &:hover{
+    background-color: #fcfcfc;
+  }
+}
+
+.add-question {
+  background-color: #666 !important;
+
+  > div{
+    color: white;
+
+    > span{
+      color: white;
+      line-height: 1.5;
+      position: relative;
+      margin-bottom: -4px;
+      display: inline-block;
+    }
+  }
+
+  &:hover {
+    background-color: #878787 !important;;
+  }
+}
+
+li {
+
+  > .delete-row {
+    background-color: #bbbbbb !important;
+    color: white;
+    width: 30px;
+    float: right;
+    height: 33px;
+    padding-right: 15px;
+    text-align: center;
+    border-radius: 4px;
+    line-height: 2.5 !important;
+    text-overflow: clip !important;
+    display: none;
+    margin-top: -10px;
+  }
+
+  &:hover .delete-row{
+    display: inline-block;
+  }
+}
+
+.action-button {
+  background-color: $buttonPrimary;
+  color: white;
+  border: none;
+  font-size: 11px;
+  display: block;
+  height: 45px;
+  cursor: pointer;
+  border-radius: 4px;
+  float: right;
+  margin-top: 20px;
+  //@include shadow;
+
+  &:hover {
+    background-color: lighten($buttonPrimary, 15%);
+  }
+
+  > .ss-icon {
+    font-size: 22px;
+    line-height: 55px;
+  }
+
+  > .button-label {
+    display: inline-block;
+    transform: translateY(-6px);
+    padding-right: 15px;
+  }
+}
+
+.default-btn, .primary-btn, .danger-btn {
+  &.rest-transparent {
+    background-color: transparent;
+    color: #666;
+  }
+}
+
+.default-btn {
+  background-color: $buttonDefault;
+  color: #666;
+
+  &:hover {
+    background-color: darken($buttonDefault, 15%);
+  }
+}
+
+.create-button {
+  margin-right: 50px;
+}
+
+.create-feed-button {
+  margin-right: 50px;
+}
+
+.primary-btn {
+  background-color: $buttonPrimary;
+  color: white;
+
+  &:hover {
+    background-color: lighten($buttonPrimary, 15%);
+  }
+}
+
+.data {
+  float: none !important;
+  margin-bottom: 30px;
+  font-size: 30px;
+  margin-left: 40px;
+  margin-top: 30px;
+  color: #666;
+  background-color: transparent;
+  border-radius: 5px;
+  outline: none;
+  text-align: left;
+  font-size: 16px;
+  padding: 0 10px;
+}
+
+.data:hover {
+  background-color: #E5E5E5;
+}
+
+.nav_icon {
+  font-family: "SSGizmo" !important;
+  font-style: normal;
+  font-weight: normal;
+  text-decoration: none;
+  text-rendering: optimizeLegibility;
+  white-space: nowrap;
+  color: #999;
+  font-size: 20px;
+  pointer-events: none;
+  padding-left: 60px;
+}
+
+.ss-plus {
+  font-size: 22px;
+}
+
+.exportcsv {
+  margin-right: 20px;
+  margin-top: 52px;
+}
+
+.edit-delete-btn {
+  margin-top: 40px;
+  margin-left: 20px;
+  &:first-of-type {
+    background-color: #a62a28;
+  }
+
+}

@@ -1,0 +1,23 @@
+@import '~@swimlane/ngx-datatable/release/index.css';
+@import '~@swimlane/ngx-datatable/release/themes/material.css';
+@import '~@swimlane/ngx-datatable/release/assets/icons.css';
+
+.datatable-body {
+  height: 600px;
+}
+
+.ngx-datatable.fixed-header .datatable-header .datatable-header-inner .datatable-header-cell {
+  line-height: 35px;
+}
+
+.datatable-checkbox {
+  padding: 0;
+}
+
+.page-count {
+  display: none;
+}
+
+.ngx-datatable *, .ngx-datatable *:before, .ngx-datatable *:after {
+  font-size: 12px;
+}

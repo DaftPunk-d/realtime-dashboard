@@ -1,0 +1,49 @@
+
+// modal styles
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.48);
+  padding: 100px 0;
+  overflow-y: auto;
+  z-index: 1000;
+
+
+  .close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 13px;
+    border-radius: 4px;
+    font-size: 20px;
+    cursor: pointer;
+    line-height: 27px;
+  }
+
+  .content {
+    background-color: #e5e8e6;
+    padding: 73px;
+    height: auto;
+    box-sizing: border-box;
+    border-radius: 4px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    max-width: 730px;
+    margin: 0 auto;
+    position: relative;
+  }
+
+  h2 {
+    margin-bottom: 40px;
+  }
+  .options-list .form-field label, .options-list .form-field span{
+    width: auto;
+  }
+
+  .options-list .feed-field label, .options-list .feed-field span{
+    width: auto;
+  }
+}

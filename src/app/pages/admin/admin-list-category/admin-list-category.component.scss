@@ -1,0 +1,278 @@
+@mixin shadow {
+  box-shadow: 0 3px 8px #ccc;
+}
+
+h1 {
+  font-size: 1.2em;
+  color: #7e7c7e;
+  display: inline-block;
+  width: 100%;
+  text-align: center;
+}
+
+.feed-info {
+  width: calc(100vw - 318px);
+  display: block;
+  height: 100vh;
+  box-sizing: border-box;
+  float: right;
+  overflow-y: scroll;
+
+  > div > h1 {
+    position: relative;
+  }
+
+  > span {
+    float: right;
+  }
+}
+
+.object {
+  display: block;
+  text-align: center;
+}
+
+h1 + span {
+  display: block;
+  font-size: 0.8em;
+  margin-bottom: 10px;
+  color: #7e7c7e;
+  margin-top: -15px;
+}
+
+.socialIcons {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  margin-top: -0.4375rem;
+
+  &.ul {
+    display: block;
+  }
+}
+
+.object-list > li > a span > span:last-child {
+  &.status {
+    width: 1.875rem;
+    height: 1.875rem;
+    font-family: "sans-serif";
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+    text-align: center;
+    color: #FFFFFF;
+    display: inline-block;
+    border-radius: 1.5rem;
+  }
+}
+
+.sidenav {
+  .object-list {
+    padding: 15px;
+    overflow-y: scroll;
+    height: calc(100% - 205px);
+
+    > li {
+      padding-top: 3vh;
+      padding-left: 20px;
+      padding-right: 10px;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+
+      > a {
+        background-color: #FAFAFA;
+        border-radius: 4px;
+        margin-bottom: 20px;
+        padding: 10px 20px;
+        box-sizing: content-box;
+        display: block;
+        position: relative;
+        box-shadow: 0 3px 8px #ccc;
+        color: #7e7c7e;
+        height: 60px;
+      }
+
+      > span {
+        display: inline-block;
+      }
+
+      > .item-status {
+        float: right;
+        width: 1.875rem;
+        height: 1.875rem;
+        font-family: "arial";
+        font-size: 1.125rem;
+        line-height: 1.75rem;
+        text-align: center;
+        display: inline-block;
+        border-radius: 1.5rem;
+
+        &.feed-error {
+          color: #666;
+          font-family: SSGizmo;
+          font-size: 1.35rem;
+        }
+
+        &.feed-caching {
+          color: #666;
+          background-image: url('https://n2ps.storied.co/skins/v2/img/v2/settings_preloader.gif');
+          background-size: 1.4rem;
+          background-position: center;
+          background-repeat: no-repeat;
+          font-size: 1.35rem;
+        }
+      }
+
+      > .sub-item {
+        display: block;
+        float: none;
+        font-size: 0.7em;
+        padding-top: 5px;
+        padding-bottom: 20px;
+        color: #666;
+      }
+    }
+  }
+}
+
+section {
+  padding: 20px 50px;
+  overflow: auto;
+}
+
+.social-delete{
+  display: none;
+}
+
+.feed-list {
+  padding: 0;
+  margin-bottom: 20px;
+  > li {
+    display: inline-block;
+    padding-left: 0;
+    padding-top: 3vh;
+    cursor: pointer;
+
+    &:hover .social-delete{
+      display: block;
+    }
+  }
+}
+
+.grid {
+  width: 500px;
+  height: 250px;
+}
+
+.feed-info > div > h1 > span {
+  display: block;
+  width: 8px;
+  height: 8px;
+  border-radius: 2.5rem;
+  position: absolute;
+  margin-left: -15px;
+  margin-top: 12px;
+}
+
+.complete {
+  background-color: #24a60a;
+}
+
+.error {
+  background-color: #a62a28;
+}
+
+.caching {
+  background-color: #dcdd26;
+}
+
+.feed-id-refresh {
+  margin-bottom: 10px;
+  > span:last-of-type {
+    float: right;
+  }
+}
+
+.feed-id {
+  a {
+    color: #666;
+  }
+}
+
+.spinning {
+  width: 30px;
+  position: absolute;
+  margin-top: -6px;
+  margin-left: 10px;
+  height: 30px;
+  background-image: url('https://n2ps.storied.co/skins/v2/img/v2/settings_preloader.gif');
+  background-size: 1.4rem;
+  background-position: center;
+  background-repeat: no-repeat;
+  font-size: 1.35rem;
+}
+
+.ss-refresh {
+  padding-left: 10px;
+  font-size: 1.45rem;
+  color: #404040;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.ss-trash {
+  font-family: SSGizmo;
+  position: absolute;
+  left: 127px;
+  top: 40px;
+  font-size: 20px;
+  opacity: 0.7;
+}
+
+.delete-btn{
+  background-color: #a62a28;
+  line-height: 50px;
+  margin-right: 10px;
+}
+
+.cancel-icon{
+  line-height: 46px;
+}
+
+.delete-component{
+  display: inline-block;
+  width: 100%;
+  .delete-buttons{
+    display: inline-block;
+    width: 100%;
+  }
+}
+
+.never-updated{
+  overflow: visible;
+}
+
+.fat{
+  font-weight: bold;
+}
+
+.social-icon-delete{
+  width: 40px;
+  padding-bottom: 0;
+  margin-right: -13px;
+  margin-left: -8px;
+  margin-bottom: -13px;
+  height: 40px;
+}
+
+.tile-error{
+  display: block;
+  width: 8px;
+  height: 8px;
+  border-radius: 2.5rem;
+  position: absolute;
+  margin-left: -13px;
+  margin-top: 6px;
+  background-color: #a62a28;
+}
