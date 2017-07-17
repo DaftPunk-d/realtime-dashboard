@@ -45,7 +45,7 @@ $background: #e5e8e6;
   }
 }
 
-.active{
+.active {
   background-color: #FFF;
   padding-right: 0;
 }
@@ -75,6 +75,41 @@ section {
   user-select: none;
 }
 
+.answer-list {
+  width: 50%;
+  > li {
+    background-color: #f8f5f8;
+    border-radius: 4px;
+    padding: 10px;
+    margin: 10px 0;
+    &:hover{
+      background-color: #fcfcfc;
+    }
+  }
+
+  > .correct {
+    background-color: green !important;
+  }
+
+  > .add-answer{
+    background-color: #666;
+    color: white;
+
+    > div > span{
+      color: white;
+    }
+
+    &:hover {
+      background-color: #878787 !important;
+    }
+  }
+}
+
+
+.delete-icon {
+  z-index: 5000;
+}
+
 .selected {
   border-radius: 3px;
 
@@ -98,13 +133,13 @@ section {
     overflow: auto;
   }
 
-  .datatable-header{
+  .datatable-header {
     font-weight: 700;
     border-top: 1px solid #fafafa;
     border-bottom: 1px solid #e0e0e0;
     background: #ededed;
-    background: -webkit-gradient(linear,left top,left bottom,from(#ededed),to(#ebebeb));
-    background: -moz-linear-gradient(top,#ededed,#ebebeb);
+    background: -webkit-gradient(linear, left top, left bottom, from(#ededed), to(#ebebeb));
+    background: -moz-linear-gradient(top, #ededed, #ebebeb);
   }
 
   &.ngx-datatable.material {
@@ -136,7 +171,6 @@ section {
   }
 
 }
-
 
 * {
   font-family: 'lato', sans-serif;
@@ -212,9 +246,11 @@ h1 {
     }
   }
 }
-.ngx-datatable.fixed-header .datatable-header .datatable-header-inner .datatable-header-cell{
+
+.ngx-datatable.fixed-header .datatable-header .datatable-header-inner .datatable-header-cell {
   border-right: 1px solid RGB(224, 204, 204);
 }
+
 .eclipse-text {
   white-space: nowrap;
   overflow: hidden;
@@ -247,7 +283,6 @@ app-distribution-chart {
   font-size: 14px !important;
 }
 
-
 .social-icon {
   background-image: url('http://n2.storied.co/assets/img/aggregator-icons-dark.svg');
   width: 75px;
@@ -269,8 +304,8 @@ app-distribution-chart {
   border-radius: 4px;
   margin-bottom: 10px;
 
-  &:hover{
-    background-color: rgba(0,0,0,0.05);
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.05);
   }
 
   .social-network {
@@ -278,18 +313,18 @@ app-distribution-chart {
     color: #666;
   }
 
-  .social-uid{
+  .social-uid {
     margin-top: 5px;
     font-weight: bold;
   }
 }
 
-.social-icon-add{
+.social-icon-add {
   font-size: 75px;
   opacity: 0.3;
 }
 
-.social-tile-add{
+.social-tile-add {
   height: 100px;
   width: 100px;
   border: 5px dashed #CCC;
@@ -298,7 +333,7 @@ app-distribution-chart {
   border-radius: 4px;
   margin-bottom: 10px;
 
-  .add-network{
+  .add-network {
     margin-top: -10px;
     color: #666;
   }

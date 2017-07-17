@@ -85,11 +85,53 @@ export class ApiService {
     });
   }
 
+  public addAnswer(answer: string, question: any, isCorrect: any): Promise<void> {
+    return new Promise<void>((resolve, reject) => {
+      const addAUrl = `${environment.dataUrl}answers`;
+      request.post({
+        url: addAUrl,
+        form: {'a': answer, 'id': question.id, 'correct': isCorrect }
+      }, (error, response, body) => {
+        if (error) {
+          reject(error);
+          return;
+        }
+        if (response.statusCode >= 400) {
+          console.error(response.statusMessage, response);
+          reject(response);
+          return;
+        }
+        resolve(body);
+      });
+    });
+  }
+
+  public updateAnswer(answer: string, question: any, isCorrect: any, answerId: any): Promise<void> {
+    return new Promise<void>((resolve, reject) => {
+      const updateAUrl = `${environment.dataUrl}answers`;
+      request.put({
+        url: updateAUrl,
+        form: {'a': answer, 'id': question.id, 'correct': isCorrect, 'answerId': answerId }
+      }, (error, response, body) => {
+        if (error) {
+          reject(error);
+          return;
+        }
+        if (response.statusCode >= 400) {
+          console.error(response.statusMessage, response);
+          reject(response);
+          return;
+        }
+        resolve(body);
+      });
+    });
+  }
+
   public deleteCategory(categoryId: string): Promise<void> {
     return new Promise<void>((resolve, reject) => {
-      const deleteFeedUrl = `${environment.dataUrl}categories/${categoryId}`;
+      const deleteCategoryUrl = `${environment.dataUrl}categories/${categoryId}`;
       request.delete({
-        url: deleteFeedUrl
+        url: deleteCategoryUrl
       }, (error, response, body) => {
         if (error) {
           reject(error);
@@ -109,6 +151,47 @@ export class ApiService {
     const getQuestionsUrl = `${environment.dataUrl}questions?categoryId=${categoryId}`;
     return this.getFromUrl(getQuestionsUrl);
   }
+
+  public deleteQuestion(questionId: string): Promise<void> {
+    return new Promise<void>((resolve, reject) => {
+      const deleteQuestionUrl = `${environment.dataUrl}questions/${questionId}`;
+      request.delete({
+        url: deleteQuestionUrl
+      }, (error, response, body) => {
+        if (error) {
+          reject(error);
+          return;
+        }
+        if (response.statusCode >= 400) {
+          console.error(response.statusMessage, response);
+          reject(response);
+          return;
+        }
+        resolve(null);
+      });
+    });
+  }
+
+  public deleteAnwser(answerId: string): Promise<void> {
+    return new Promise<void>((resolve, reject) => {
+      const deleteAnswerUrl = `${environment.dataUrl}answers/${answerId}`;
+      request.delete({
+        url: deleteAnswerUrl
+      }, (error, response, body) => {
+        if (error) {
+          reject(error);
+          return;
+        }
+        if (response.statusCode >= 400) {
+          console.error(response.statusMessage, response);
+          reject(response);
+          return;
+        }
+        resolve(null);
+      });
+    });
+  }
+
 
   public getAnswersByQuestion(questionId: number): Promise<any[]> {
     const getAnswersUrl = `${environment.dataUrl}answers?questionId=${questionId}`;

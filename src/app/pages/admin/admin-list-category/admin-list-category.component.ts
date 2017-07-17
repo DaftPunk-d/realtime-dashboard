@@ -6,6 +6,7 @@ import { Observable } from 'rxjs/Observable';
 import { environment } from '../../../../environments/environment';
 import * as moment from 'moment';
 import * as $ from 'jquery';
+import { tryParse } from 'selenium-webdriver/http';
 
 enableProdMode();
 
@@ -24,7 +25,11 @@ export class AdminListCategoryComponent implements OnInit {
 
   isNewFeed = false;
   @ViewChild('table') table: any;
+
   answers: any[];
+  _answer: any;
+  answer: any;
+  createAnswerModalVisible: boolean;
 
   questions: any[];
   question: any;
@@ -63,20 +68,19 @@ export class AdminListCategoryComponent implements OnInit {
 
   handleCreatedOrUpdatedQuestion(question?: any) {
     window.scrollTo(0, 0);
-    this.questions.push(question);
+    if(parseInt(question.categoryId) === this.category.id){
+      this.questions.push(question);
+    }
     this.createQuestionModalVisible = false;
   }
 
-
-  handleCreatedOrUpdatedQuery(query?: any) {
-    this.createQueryModalVisible = false;
-    if (query) {
-      if (this.feed.queries) {
-        this.feed.queries.push(query);
-      } else {
-        this.feed.queries = query;
-      }
+  handleCreatedOrUpdatedAnswer(answer?: any) {
+    window.scrollTo(0, 0);
+    if(!answer.answerId) {
+      this.answers.push(answer);
+    }else {
     }
+    this.createAnswerModalVisible = false;
   }
 
   deleteCategory(category) {
@@ -103,6 +107,7 @@ export class AdminListCategoryComponent implements OnInit {
         if (result && result.length > 0) {
           this.questions = result;
           this.question = result[0];
+          this.selectQuestion({ id: result[0].id});
         } else {
           this.questions = [];
         }
@@ -113,17 +118,51 @@ export class AdminListCategoryComponent implements OnInit {
   }
 
   selectQuestion(question) {
-    const questionId = this.question.id;
+    this.question = question;
+    const questionId = question.id;
     this.apiService.getAnswersByQuestion(questionId)
       .then((result: any) => {
-        if (result.length > 0) {
+        if (result && result.length > 0) {
           this.answers = result;
         } else {
+          this.answers = [];
           this.answers[0].answer = 'There are no answers for this question.';
         }
       })
       .catch((err: any) => {
-        console.log('error selecting category' + err);
+        console.log('error selecting question' + err);
+      });
+  }
+
+  deleteQuestion(question) {
+    this.apiService.deleteQuestion(question.id)
+      .then((result: any) => {
+        const currentIndex = _.findIndex(this.questions, {id: question.id});
+        _.remove(this.questions, question);
+        if (currentIndex > 0) {
+          this.question = this.questions[currentIndex - 1];
+        } else {
+          this.question = this.questions[currentIndex];
+        }
+      })
+      .catch((err: any) => {
+        console.log('error deleting questions: ' + err);
+      });
+  }
+
+  deleteAnswer(answer) {
+    this.apiService.deleteAnwser(answer.id)
+      .then((result: any) => {
+        const currentIndex = _.findIndex(this.questions, {id: answer.id});
+        _.remove(this.answers, answer);
+        if (currentIndex > 0) {
+          this.answer = this.answers[currentIndex - 1];
+        } else {
+          this.answer = this.answers[currentIndex];
+        }
+      })
+      .catch((err: any) => {
+        console.log('error deleting answers: ' + err);
       });
   }
 

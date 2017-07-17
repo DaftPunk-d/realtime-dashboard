@@ -14,6 +14,7 @@ import { FormsListComponent } from './pages/survey/forms-list/forms-list.compone
 import { FormsCreateComponent } from './pages/survey/forms-create/forms-create.component';
 import { AdminListQuestionComponent } from './pages/admin/admin-list-question/admin-list-question.component';
 import { AdminCreateQuestionComponent } from './pages/admin/admin-create-question/admin-create-question.component';
+import { AdminCreateAnswerComponent } from './pages/admin/admin-create-answer/admin-create-answer.component';
 
 const appRoutes: Routes = [
   { path: '',          redirectTo: '/survey', pathMatch: 'full' }
@@ -27,6 +28,7 @@ const appRoutes: Routes = [
     AdminCreateCategoryComponent,
     AdminListQuestionComponent,
     AdminCreateQuestionComponent,
+    AdminCreateAnswerComponent,
   ],
   imports: [
     BrowserModule,

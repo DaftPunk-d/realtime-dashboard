@@ -1,0 +1,16 @@
+<h1 class="h1-feed">{{ isNewAnswer ? 'Add Answer' : 'Update Answer'}}</h1>
+
+<div class="options-list">
+  <div class="feed-field label">
+    <label for="label">Answer: </label>
+    <input #label type="text" placeholder="name" name="label" id="label" required value="{{answer?.answer}}">
+  </div>
+  <div class="feed-field label checkbox-answer-div">
+    <label for="correct">Correct answer? </label>
+    <input #correct class="checkbox-answer" type="checkbox" name="correct" id="correct" required [checked]="answer?.isCorrect === 0 ? false : true">
+  </div>
+  <div class="action-button create-feed-button"
+       (click)="onSubmit(label.value, correct.checked)">
+    <span class="create-icon ss-icon">💾</span><span class="button-label">{{ isNewAnswer ? 'add' : 'save changes'}}</span>
+  </div>
+</div>

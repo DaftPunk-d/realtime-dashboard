@@ -2,29 +2,44 @@
   <app-nav></app-nav>
   <!--list of all forms-->
   <h1>Categories</h1>
-  <button class="action-button data" (click)="createCategoryModalVisible = true; isNewFeed = true;">Add a new category<span class="nav_icon">+</span></button>
+  <button class="action-button data" (click)="createCategoryModalVisible = true; isNewFeed = true;">Add a new
+    category<span class="nav_icon">+</span></button>
   <ul class="object-list">
-    <li *ngFor="let _category of categories" [ngClass]="{'selected': _category.name === category.name }" (click)="selectCategory(_category);"><span>{{_category.name}}</span>
-      <div class="delete-row" (click)="deleteCategoryModalVisible = true; $event.stopPropagation(); categoryToDelete = _category" title="Delete this category">
+    <li *ngFor="let _category of categories" [ngClass]="{'selected': _category.name === category.name }"
+        (click)="selectCategory(_category);"><span>{{_category.name}}</span>
+      <div class="delete-row"
+           (click)="deleteCategoryModalVisible = true; $event.stopPropagation(); categoryToDelete = _category"
+           title="Delete this category">
         <span class="delete-icon ss-icon">&#xE0D0;</span>
       </div>
     </li>
   </ul>
 </div>
 <section>
+  <h2>Questions</h2>
   <ul class="object-list question-list">
-    <li *ngFor="let _question of questions" [ngClass]="{'selected': _question.question === question.question }" (click)="selectQuestion(_question);"><span>{{_question.question}}</span>
-      <div class="delete-row" (click)="deleteQuestion(_question)" title="Delete this question">
+    <li *ngFor="let _question of questions" [ngClass]="{'selected': _question?.question === question?.question }"
+        (click)="selectQuestion(_question)"><span>{{_question?.question}}</span>
+      <div class="delete-row" (click)="deleteQuestion(_question); $event.stopPropagation();" title="Delete this question">
         <span class="delete-icon ss-icon">&#xE0D0;</span>
       </div>
     </li>
     <li class="add-question">
       <div (click)="createQuestionModalVisible = true;">Add a new question<span class="nav_icon">+</span></div>
     </li>
-
+  </ul>
+  <h2>Answers</h2>
+  <ul class="object-list answer-list">
+    <li *ngFor="let _answer of answers" [ngClass]="{'correct': _answer.isCorrect === 1 }" (click)="createAnswerModalVisible=true; isNewAnswer=false; answerToUpdate=_answer;"><span>{{_answer.answer}}</span>
+      <div class="delete-row delete-row-answer" (click)="deleteAnswer(_answer); $event.stopPropagation();" title="Delete this answer">
+        <span class="delete-icon ss-icon">&#xE0D0;</span>
+      </div>
+    </li>
+    <li class="add-answer">
+      <div (click)="createAnswerModalVisible = true; isNewAnswer=true">Add a new answer<span class="nav_icon">+</span></div>
+    </li>
   </ul>
 </section>
-
 
 <div class="link-ad-popup modal " (click)="createCategoryModalVisible = false" *ngIf="createCategoryModalVisible">
   <div class="content" (click)="$event.stopPropagation()">
@@ -35,12 +50,18 @@
 
 <div class="link-feed-popup modal " (click)="deleteCategoryModalVisible = false" *ngIf="deleteCategoryModalVisible">
   <div class="content" (click)="$event.stopPropagation()">
-    <div class="close-button ss-icon" (click)="$event.stopPropagation(); deleteCategoryModalVisible = false">&#x2421;</div>
+    <div class="close-button ss-icon" (click)="$event.stopPropagation(); deleteCategoryModalVisible = false">
+      &#x2421;</div>
     <div class="delete-component">
       <span>Are you sure you want to delete this category: <span class="fat">{{categoryToDelete.name}}</span>?</span>
       <div class="delete-buttons">
-        <div class="action-button btn" (click)="deleteCategoryModalVisible = false"><span class="cancel-icon ss-icon" title="Don't delete this category">cancel</span></div>
-        <div class="action-button delete-btn" (click)="deleteCategory(categoryToDelete); deleteCategoryModalVisible=false"><span class="ss-icon" title="Delete this category">&#xE0D0;</span></div>
+        <div class="action-button btn" (click)="deleteCategoryModalVisible = false"><span class="cancel-icon ss-icon"
+                                                                                          title="Don't delete this category">cancel</span>
+        </div>
+        <div class="action-button delete-btn"
+             (click)="deleteCategory(categoryToDelete); deleteCategoryModalVisible=false"><span class="ss-icon"
+                                                                                                title="Delete this category">&#xE0D0;</span>
+        </div>
       </div>
     </div>
   </div>
@@ -53,14 +74,28 @@
   </div>
 </div>
 
+<div class="link-ad-popup modal " (click)="createAnswerModalVisible = false" *ngIf="createAnswerModalVisible">
+  <div class="content" (click)="$event.stopPropagation()">
+    <div class="close-button ss-icon" (click)="createAnswerModalVisible = false">&#x2421;</div>
+    <app-admin-create-answer (createdOrUpdated)="handleCreatedOrUpdatedAnswer($event)" [question]="question" [answer]="answerToUpdate" [isNewAnswer]="isNewAnswer"></app-admin-create-answer>
+  </div>
+</div>
+
 <div class="link-feed-popup modal " (click)="deleteQuestionModalVisible = false" *ngIf="deleteQuestionModalVisible">
   <div class="content" (click)="$event.stopPropagation()">
-    <div class="close-button ss-icon" (click)="$event.stopPropagation(); deleteQuestionModalVisible = false">&#x2421;</div>
+    <div class="close-button ss-icon" (click)="$event.stopPropagation(); deleteQuestionModalVisible = false">
+      &#x2421;</div>
     <div class="delete-component">
-      <span>Are you sure you want to delete this question: <span class="fat">{{questionToDelete.question}}</span>?</span>
+      <span>Are you sure you want to delete this question: <span
+        class="fat">{{questionToDelete.question}}</span>?</span>
       <div class="delete-buttons">
-        <div class="action-button btn" (click)="deleteQuestionModalVisible = false"><span class="cancel-icon ss-icon" title="Don't delete this question">cancel</span></div>
-        <div class="action-button delete-btn" (click)="deleteQuestion(questionToDelete); deleteQuestionModalVisible=false"><span class="ss-icon" title="Delete this question">&#xE0D0;</span></div>
+        <div class="action-button btn" (click)="deleteQuestionModalVisible = false"><span class="cancel-icon ss-icon"
+                                                                                          title="Don't delete this question">cancel</span>
+        </div>
+        <div class="action-button delete-btn"
+             (click)="deleteQuestion(questionToDelete); deleteQuestionModalVisible=false"><span class="ss-icon"
+                                                                                                title="Delete this question">&#xE0D0;</span>
+        </div>
       </div>
     </div>
   </div>
