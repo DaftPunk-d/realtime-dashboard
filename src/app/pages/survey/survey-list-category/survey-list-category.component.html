@@ -1,0 +1,7 @@
+<p class="admin">Are you <a routerLink="/admin" routerLinkActive="active">admin</a> of this page?</p>
+<h1>Categories</h1>
+<ul class="category-list">
+  <li *ngFor="let _category of categories"
+      (click)="selectCategory(_category);"><span>{{_category.name}}</span>
+  </li>
+</ul>

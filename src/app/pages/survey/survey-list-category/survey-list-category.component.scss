@@ -1,0 +1,26 @@
+.category-list{
+
+  display: inline-block;
+  width: 100%;
+
+  > li{
+    padding: 50px;
+    color: #666;
+    background-color: #eeeeee;
+    margin: 20px;
+    border: 1px #666 solid;
+    border-radius: 4px;
+    width: 20%;
+    display: inline-block;
+    text-align: center;
+
+    &:hover{
+      cursor:pointer;
+      background-color: #e7e7e7;
+    }
+  }
+}
+
+.admin, h1{
+  padding: 10px;
+}

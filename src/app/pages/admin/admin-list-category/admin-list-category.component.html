@@ -18,7 +18,7 @@
 <section>
   <h2>Questions</h2>
   <ul class="object-list question-list">
-    <li *ngFor="let _question of questions" [ngClass]="{'selected': _question?.question === question?.question }"
+    <li *ngFor="let _question of questions" [ngClass]="{'selected-question': _question?.question === question?.question }"
         (click)="selectQuestion(_question)"><span>{{_question?.question}}</span>
       <div class="delete-row" (click)="deleteQuestion(_question); $event.stopPropagation();" title="Delete this question">
         <span class="delete-icon ss-icon">&#xE0D0;</span>

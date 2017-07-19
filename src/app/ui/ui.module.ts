@@ -4,14 +4,14 @@ import { NavComponent } from './nav/nav.component';
 import { RouterModule, Routes } from '@angular/router';
 
 import { AdminListCategoryComponent } from '../pages/admin/admin-list-category/admin-list-category.component';
+import { SurveyListCategoryComponent } from '../pages/survey/survey-list-category/survey-list-category.component';
 import { ModalComponent } from './modal/modal.component';
-import { FormsListComponent } from '../pages/survey/forms-list/forms-list.component';
 
 
 const appRoutes: Routes = [
   {path: '', redirectTo: '/survey', pathMatch: 'full'},
 
-  {path: 'survey', component: FormsListComponent},
+  {path: 'survey', component: SurveyListCategoryComponent},
 
   {path: 'admin', component: AdminListCategoryComponent}
 
