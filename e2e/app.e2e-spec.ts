@@ -1,6 +1,6 @@
 import { DatadashboardPage } from './app.po';
 
-describe('datadashboard App', () => {
+describe('realtime App', () => {
   let page: DatadashboardPage;
 
   beforeEach(() => {

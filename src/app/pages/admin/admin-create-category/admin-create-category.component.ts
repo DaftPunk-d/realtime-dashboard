@@ -1,5 +1,5 @@
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
-import { ApiService, IForms } from '../../../core/api.service';
+import { ApiService } from '../../../core/api.service';
 import * as _ from 'lodash';
 import { Router } from '@angular/router';
 

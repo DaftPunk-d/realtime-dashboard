@@ -126,7 +126,6 @@ export class AdminListCategoryComponent implements OnInit {
           this.answers = result;
         } else {
           this.answers = [];
-          this.answers[0].answer = 'There are no answers for this question.';
         }
       })
       .catch((err: any) => {
