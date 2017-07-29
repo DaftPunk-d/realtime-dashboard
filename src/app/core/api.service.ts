@@ -12,26 +12,6 @@ export class IForms {
   form_identifier: string;
   form_userid: string;
 }
-interface IColumns {
-  form_columns_name: string;
-  form_userid: string;
-  form_columns_form_id?: number;
-}
-interface IFormInfo {
-  creationDate: Date;
-  formIdentifier: string;
-}
-
-export interface INetwork {
-  id?: number;
-  network_id: number;
-  name: string;
-}
-export interface IColumnInfo {
-  form_columns_name: string;
-  form_columns_id?: number;
-}
-
 
 @Injectable()
 export class ApiService {
