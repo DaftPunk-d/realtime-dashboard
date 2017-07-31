@@ -75,7 +75,6 @@ section {
 }
 
 .answer-list {
-  width: 50%;
   > li {
     background-color: #f8f5f8;
     border-radius: 4px;
@@ -93,6 +92,7 @@ section {
   > .add-answer{
     background-color: #666;
     color: white;
+    padding: 20px 30px !important;
 
     > div > span{
       color: white;
@@ -266,7 +266,7 @@ h1 {
 
 h2 {
   font-size: 1.3em;
-  margin: 10px 0;
+  margin: 50px 0;
 }
 
 h3 {
@@ -286,120 +286,3 @@ app-distribution-chart {
   font-size: 14px !important;
 }
 
-.social-icon {
-  background-image: url('http://n2.storied.co/assets/img/aggregator-icons-dark.svg');
-  width: 75px;
-  height: 75px;
-  background-repeat: no-repeat;
-  display: inline-block;
-  background-size: cover;
-  border-radius: 4px;
-  margin-bottom: 3px;
-  opacity: 0.3;
-}
-
-.social-tile {
-  height: 100px;
-  width: 100px;
-  border: 5px solid #CCC;
-  display: block;
-  padding: 7px 25px 30px 25px;
-  border-radius: 4px;
-  margin-bottom: 10px;
-
-  &:hover {
-    background-color: rgba(0, 0, 0, 0.05);
-  }
-
-  .social-network {
-    margin-top: -10px;
-    color: #666;
-  }
-
-  .social-uid {
-    margin-top: 5px;
-    font-weight: bold;
-  }
-}
-
-.social-icon-add {
-  font-size: 75px;
-  opacity: 0.3;
-}
-
-.social-tile-add {
-  height: 100px;
-  width: 100px;
-  border: 5px dashed #CCC;
-  display: block;
-  padding: 7px 25px 30px 25px;
-  border-radius: 4px;
-  margin-bottom: 10px;
-
-  .add-network {
-    margin-top: -10px;
-    color: #666;
-  }
-}
-
-$numOfIcons: 14;
-
-.social-icon-facebook {
-  background-position: 0 0;
-}
-
-.social-icon-twitter {
-  background-position: 100% / $numOfIcons * 1 0;
-}
-
-.social-icon-instagram {
-  background-position: 100% / $numOfIcons * 2 0;
-}
-
-.social-icon-tumblr {
-  background-position: 100% / $numOfIcons * 3 0;
-}
-
-.social-icon-tables {
-  background-position: 100% / $numOfIcons * 4 0;
-}
-
-.social-icon-youtube {
-  background-position: 100% / $numOfIcons * 5 0;
-}
-
-.social-icon-rss {
-  background-position: 100% / $numOfIcons * 6 0;
-}
-
-.social-icon-google_drive {
-  background-position: 100% / $numOfIcons * 7 0;
-}
-
-.social-icon-storied {
-  background-position: 100% / $numOfIcons * 8 0;
-}
-
-.social-icon-wordpress {
-  background-position: 100% / $numOfIcons * 9 0;
-}
-
-.social-icon-google_calendar {
-  background-position: 100% / $numOfIcons * 10 0;
-}
-
-.social-icon-salesforce {
-  background-position: 100% / $numOfIcons * 11 0;
-}
-
-.social-icon-themoviedb {
-  background-position: 100% / $numOfIcons * 12 0;
-}
-
-.social-icon-brightcove {
-  background-position: 100% / $numOfIcons * 13 0;
-}
-
-.social-icon-csv {
-  background-position: 100% / $numOfIcons * 14 0;
-}
