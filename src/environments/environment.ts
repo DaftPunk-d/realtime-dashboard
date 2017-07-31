@@ -6,7 +6,4 @@
 export const environment = {
   production: false,
   dataUrl: 'http://localhost:9999/',
-  dataUrl_: 'https://data.storied.co/stage/',
-  feedUrl: 'http://localhost:64220/',
-  feedUrl_: 'https://feeds.storied.co/stage/'
 };
