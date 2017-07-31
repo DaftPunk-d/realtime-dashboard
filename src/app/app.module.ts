@@ -16,7 +16,7 @@ import { AdminCreateAnswerComponent } from './pages/admin/admin-create-answer/ad
 import { SurveyListCategoryComponent } from './pages/survey/survey-list-category/survey-list-category.component';
 
 const appRoutes: Routes = [
-  { path: '',          redirectTo: '/survey', pathMatch: 'full' }
+  { path: '',          redirectTo: '/quiz', pathMatch: 'full' }
 ];
 @NgModule({
   declarations: [

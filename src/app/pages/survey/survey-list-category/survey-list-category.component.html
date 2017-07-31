@@ -1,7 +1,17 @@
 <p class="admin">Are you <a routerLink="/admin" routerLinkActive="active">admin</a> of this page?</p>
-<h1>Categories</h1>
-<ul class="category-list">
-  <li *ngFor="let _category of categories"
-      (click)="selectCategory(_category);"><span>{{_category.name}}</span>
-  </li>
-</ul>
+<main class="canvas-quiz">
+  <section class="choose-category" *ngIf="chooseCategoryVisible">
+    <h1>Kies een categorie</h1>
+    <ul class="category-list">
+      <li *ngFor="let _category of categories"
+          (click)="selectCategory(_category); chooseCategoryVisible=false;"><span>{{_category.name}}</span>
+      </li>
+    </ul>
+  </section>
+  <section class="start-page" *ngIf="!chooseCategoryVisible && !startQuiz">
+    <button class="action-button start-button" (click)="startQuiz=true">Start Quiz about <b>{{ category.name }}</b></button>
+  </section>
+  <section class="quiz" *ngIf="startQuiz">
+    It's a quiz about {{ category.name }}
+  </section>
+</main>

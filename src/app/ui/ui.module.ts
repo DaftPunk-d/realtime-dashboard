@@ -9,9 +9,9 @@ import { ModalComponent } from './modal/modal.component';
 
 
 const appRoutes: Routes = [
-  {path: '', redirectTo: '/survey', pathMatch: 'full'},
+  {path: '', redirectTo: '/quiz', pathMatch: 'full'},
 
-  {path: 'survey', component: SurveyListCategoryComponent},
+  {path: 'quiz', component: SurveyListCategoryComponent},
 
   {path: 'admin', component: AdminListCategoryComponent}
 
