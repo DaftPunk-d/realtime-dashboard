@@ -15,6 +15,9 @@ export class SurveyListCategoryComponent implements OnInit {
   questions: any[];
   question: any;
 
+  chooseCategoryVisible = true;
+  startQuiz = false;
+
 
   constructor(private apiService: ApiService) { }
 
@@ -25,8 +28,6 @@ export class SurveyListCategoryComponent implements OnInit {
           return o.name;
         }]);
         this.categories = categories;
-        this.category = categories[0];
-        this.selectCategory(this.category);
       })
       .catch((err) => {
         console.error('Failed to get categories', err);
@@ -35,12 +36,11 @@ export class SurveyListCategoryComponent implements OnInit {
 
   selectCategory(category) {
     this.category = category;
-    const categoryId = this.category.id;
+    const categoryId = category.id;
     this.apiService.getQuestionsByCategory(categoryId)
       .then((result: any) => {
         if (result && result.length > 0) {
           this.questions = result;
-          this.question = result[0];
           // this.selectQuestion({ id: result[0].id});
         } else {
           this.questions = [];

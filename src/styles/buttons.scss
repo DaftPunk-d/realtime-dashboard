@@ -106,6 +106,14 @@ li {
   }
 }
 
+.start-button{
+  font-size: 25px;
+  margin: 0 auto;
+  position: absolute;
+  padding: 40px;
+  line-height: 2px;
+}
+
 .default-btn, .primary-btn, .danger-btn {
   &.rest-transparent {
     background-color: transparent;
