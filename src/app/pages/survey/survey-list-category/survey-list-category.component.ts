@@ -15,6 +15,8 @@ export class SurveyListCategoryComponent implements OnInit {
   questions: any[];
   question: any;
 
+  answers: any[];
+
   chooseCategoryVisible = true;
   startQuiz = false;
 
@@ -40,8 +42,11 @@ export class SurveyListCategoryComponent implements OnInit {
     this.apiService.getQuestionsByCategory(categoryId)
       .then((result: any) => {
         if (result && result.length > 0) {
-          this.questions = result;
-          // this.selectQuestion({ id: result[0].id});
+          this.questions = this.shuffle(result);
+          this.question = this.questions[0];
+          this.apiService.getAnswersByQuestion(this.question.id).then((answers: any) => {
+            this.answers = answers;
+          })
         } else {
           this.questions = [];
         }
@@ -49,6 +54,29 @@ export class SurveyListCategoryComponent implements OnInit {
       .catch((err: any) => {
         console.log('error selecting category' + err);
       });
+  }
+
+
+
+
+
+  shuffle(array) {
+    let currentIndex = array.length, temporaryValue, randomIndex;
+
+    // While there remain elements to shuffle...
+    while (0 !== currentIndex) {
+
+      // Pick a remaining element...
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex -= 1;
+
+      // And swap it with the current element.
+      temporaryValue = array[currentIndex];
+      array[currentIndex] = array[randomIndex];
+      array[randomIndex] = temporaryValue;
+    }
+
+    return array;
   }
 
 }

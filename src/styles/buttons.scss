@@ -114,6 +114,19 @@ li {
   line-height: 2px;
 }
 
+.answer-button{
+  background-color: #666;
+  color: white;
+  border: none;
+  font-size: 11px;
+  display: block;
+  height: 45px;
+  cursor: pointer;
+  border-radius: 4px;
+  float: right;
+  margin-top: 20px;
+}
+
 .default-btn, .primary-btn, .danger-btn {
   &.rest-transparent {
     background-color: transparent;

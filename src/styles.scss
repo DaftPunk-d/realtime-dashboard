@@ -420,6 +420,12 @@ $numOfIcons: 14;
   display: flex;
 }
 
+.quiz-text{
+  > ul > li{
+    display: inline-block;
+  }
+}
+
 .canvas-quiz{
   position: relative;
   display: block;
