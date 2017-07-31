@@ -115,16 +115,14 @@ li {
 }
 
 .answer-button{
-  background-color: #666;
-  color: white;
-  border: none;
-  font-size: 11px;
-  display: block;
-  height: 45px;
+  background-color: rgba(102, 102, 102, 0.78);
+  color: rgba(249, 249, 249, 0.55);
+  border: 1px solid #CCC;
+  font-size: 20px;
   cursor: pointer;
   border-radius: 4px;
-  float: right;
-  margin-top: 20px;
+  padding: 10px;
+  margin: 0 5px;
 }
 
 .default-btn, .primary-btn, .danger-btn {

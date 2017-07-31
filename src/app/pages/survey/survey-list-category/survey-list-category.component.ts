@@ -19,16 +19,21 @@ export class SurveyListCategoryComponent implements OnInit {
 
   chooseCategoryVisible = true;
   startQuiz = false;
+  loadingData = false;
+  loadingCategories = false;
 
 
   constructor(private apiService: ApiService) { }
 
   ngOnInit() {
+    this.loadingData = false;
+    this.loadingCategories = true;
     this.apiService.getCategories()
       .then((categories: any) => {
         categories = _.sortBy(categories, [function (o) {
           return o.name;
         }]);
+        this.loadingCategories = false;
         this.categories = categories;
       })
       .catch((err) => {
@@ -42,6 +47,7 @@ export class SurveyListCategoryComponent implements OnInit {
     this.apiService.getQuestionsByCategory(categoryId)
       .then((result: any) => {
         if (result && result.length > 0) {
+          this.loadingData = false;
           this.questions = this.shuffle(result);
           this.question = this.questions[0];
           this.apiService.getAnswersByQuestion(this.question.id).then((answers: any) => {
@@ -54,6 +60,11 @@ export class SurveyListCategoryComponent implements OnInit {
       .catch((err: any) => {
         console.log('error selecting category' + err);
       });
+  }
+
+  clearQuestionsAndAnswers(){
+    this.questions.length = 0;
+    this.answers.length = 0;
   }
 
 
