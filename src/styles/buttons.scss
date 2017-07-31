@@ -52,7 +52,7 @@
 li {
 
   > .delete-row {
-    background-color: #bbbbbb !important;
+    background-color: #ff0400 !important;
     color: white;
     width: 30px;
     float: right;
@@ -143,12 +143,8 @@ li {
   }
 }
 
-.create-button {
-  margin-right: 50px;
-}
-
-.create-feed-button {
-  margin-right: 50px;
+.add-button {
+  margin-right: 40px;
 }
 
 .primary-btn {
@@ -196,16 +192,3 @@ li {
   font-size: 22px;
 }
 
-.exportcsv {
-  margin-right: 20px;
-  margin-top: 52px;
-}
-
-.edit-delete-btn {
-  margin-top: 40px;
-  margin-left: 20px;
-  &:first-of-type {
-    background-color: #a62a28;
-  }
-
-}
