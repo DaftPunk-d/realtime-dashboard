@@ -7,6 +7,7 @@ import { AdminListCategoryComponent } from '../pages/admin/admin-list-category/a
 import { SurveyListCategoryComponent } from '../pages/survey/survey-list-category/survey-list-category.component';
 import { ModalComponent } from './modal/modal.component';
 import { RegisterComponent } from '../pages/register/register.component';
+import { LoginComponent } from '../pages/login/login.component';
 
 
 const appRoutes: Routes = [
@@ -16,7 +17,9 @@ const appRoutes: Routes = [
 
   {path: 'admin', component: AdminListCategoryComponent},
 
-  {path: 'register', component: RegisterComponent}
+  {path: 'register', component: RegisterComponent},
+
+  {path: 'login', component: LoginComponent}
 
 ];
 

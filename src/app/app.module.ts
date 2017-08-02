@@ -15,6 +15,7 @@ import { AdminCreateQuestionComponent } from './pages/admin/admin-create-questio
 import { AdminCreateAnswerComponent } from './pages/admin/admin-create-answer/admin-create-answer.component';
 import { SurveyListCategoryComponent } from './pages/survey/survey-list-category/survey-list-category.component';
 import { RegisterComponent } from './pages/register/register.component';
+import { LoginComponent } from './pages/login/login.component';
 
 const appRoutes: Routes = [
   { path: '',          redirectTo: '/quiz', pathMatch: 'full' }
@@ -28,7 +29,8 @@ const appRoutes: Routes = [
     AdminCreateQuestionComponent,
     AdminCreateAnswerComponent,
     SurveyListCategoryComponent,
-    RegisterComponent
+    RegisterComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
