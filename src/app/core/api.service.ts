@@ -44,6 +44,27 @@ export class ApiService {
     });
   }
 
+  public addUser(user: any): Promise<void> {
+    return new Promise<void>((resolve, reject) => {
+      const addCatUrl = `${environment.dataUrl}register`;
+      request.post({
+        url: addCatUrl,
+        form: {'user': user}
+      }, (error, response, body) => {
+        if (error) {
+          reject(error);
+          return;
+        }
+        if (response.statusCode >= 400) {
+          console.error(response.statusMessage, response);
+          reject(response);
+          return;
+        }
+        resolve(body);
+      });
+    });
+  }
+
   public addQuestion(question: string, categoryId: number): Promise<void> {
     return new Promise<void>((resolve, reject) => {
       const addQUrl = `${environment.dataUrl}questions`;
