@@ -14,9 +14,10 @@ import { AdminListQuestionComponent } from './pages/admin/admin-list-question/ad
 import { AdminCreateQuestionComponent } from './pages/admin/admin-create-question/admin-create-question.component';
 import { AdminCreateAnswerComponent } from './pages/admin/admin-create-answer/admin-create-answer.component';
 import { SurveyListCategoryComponent } from './pages/survey/survey-list-category/survey-list-category.component';
+import { RegisterComponent } from './pages/register/register.component';
 
 const appRoutes: Routes = [
-  { path: '',          redirectTo: '/survey', pathMatch: 'full' }
+  { path: '',          redirectTo: '/quiz', pathMatch: 'full' }
 ];
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ const appRoutes: Routes = [
     AdminCreateQuestionComponent,
     AdminCreateAnswerComponent,
     SurveyListCategoryComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
@@ -34,8 +36,7 @@ const appRoutes: Routes = [
     ReactiveFormsModule,
     HttpModule,
     UiModule,
-    RouterModule.forRoot(appRoutes),
-    NgxDatatableModule
+    RouterModule.forRoot(appRoutes)
   ],
   providers: [ApiService],
   bootstrap: [AppComponent]

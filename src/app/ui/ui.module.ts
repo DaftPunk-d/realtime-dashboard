@@ -6,14 +6,17 @@ import { RouterModule, Routes } from '@angular/router';
 import { AdminListCategoryComponent } from '../pages/admin/admin-list-category/admin-list-category.component';
 import { SurveyListCategoryComponent } from '../pages/survey/survey-list-category/survey-list-category.component';
 import { ModalComponent } from './modal/modal.component';
+import { RegisterComponent } from '../pages/register/register.component';
 
 
 const appRoutes: Routes = [
-  {path: '', redirectTo: '/survey', pathMatch: 'full'},
+  {path: '', redirectTo: '/quiz', pathMatch: 'full'},
 
-  {path: 'survey', component: SurveyListCategoryComponent},
+  {path: 'quiz', component: SurveyListCategoryComponent},
 
-  {path: 'admin', component: AdminListCategoryComponent}
+  {path: 'admin', component: AdminListCategoryComponent},
+
+  {path: 'register', component: RegisterComponent}
 
 ];
 

@@ -15,18 +15,26 @@ export class SurveyListCategoryComponent implements OnInit {
   questions: any[];
   question: any;
 
+  answers: any[];
+
+  chooseCategoryVisible = true;
+  startQuiz = false;
+  loadingData = false;
+  loadingCategories = false;
+
 
   constructor(private apiService: ApiService) { }
 
   ngOnInit() {
+    this.loadingData = false;
+    this.loadingCategories = true;
     this.apiService.getCategories()
       .then((categories: any) => {
         categories = _.sortBy(categories, [function (o) {
           return o.name;
         }]);
+        this.loadingCategories = false;
         this.categories = categories;
-        this.category = categories[0];
-        this.selectCategory(this.category);
       })
       .catch((err) => {
         console.error('Failed to get categories', err);
@@ -35,13 +43,16 @@ export class SurveyListCategoryComponent implements OnInit {
 
   selectCategory(category) {
     this.category = category;
-    const categoryId = this.category.id;
+    const categoryId = category.id;
     this.apiService.getQuestionsByCategory(categoryId)
       .then((result: any) => {
         if (result && result.length > 0) {
-          this.questions = result;
-          this.question = result[0];
-          // this.selectQuestion({ id: result[0].id});
+          this.loadingData = false;
+          this.questions = this.shuffle(result);
+          this.question = this.questions[0];
+          this.apiService.getAnswersByQuestion(this.question.id).then((answers: any) => {
+            this.answers = answers;
+          })
         } else {
           this.questions = [];
         }
@@ -49,6 +60,34 @@ export class SurveyListCategoryComponent implements OnInit {
       .catch((err: any) => {
         console.log('error selecting category' + err);
       });
+  }
+
+  clearQuestionsAndAnswers(){
+    this.questions.length = 0;
+    this.answers.length = 0;
+  }
+
+
+
+
+
+  shuffle(array) {
+    let currentIndex = array.length, temporaryValue, randomIndex;
+
+    // While there remain elements to shuffle...
+    while (0 !== currentIndex) {
+
+      // Pick a remaining element...
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex -= 1;
+
+      // And swap it with the current element.
+      temporaryValue = array[currentIndex];
+      array[currentIndex] = array[randomIndex];
+      array[randomIndex] = temporaryValue;
+    }
+
+    return array;
   }
 
 }

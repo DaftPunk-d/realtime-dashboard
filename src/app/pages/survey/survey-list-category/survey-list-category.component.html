@@ -1,7 +1,32 @@
 <p class="admin">Are you <a routerLink="/admin" routerLinkActive="active">admin</a> of this page?</p>
-<h1>Categories</h1>
-<ul class="category-list">
-  <li *ngFor="let _category of categories"
-      (click)="selectCategory(_category);"><span>{{_category.name}}</span>
-  </li>
-</ul>
+<p class="register"><a routerLink="/register" routerLinkActive="active">register</a></p>
+<main class="canvas-quiz">
+  <p class="back" title="Go back to start.">&#x2B05;</p>
+  <section class="choose-category" *ngIf="chooseCategoryVisible">
+    <h1>Choose a category</h1>
+    <div *ngIf="loadingCategories" class="spinning-for-data"><span>Waiting for categories.</span></div>
+    <ul class="category-list">
+      <li *ngFor="let _category of categories"
+          (click)="selectCategory(_category); chooseCategoryVisible=false; startPage=true; loadingData=true;"><span>{{_category.name}}</span>
+      </li>
+    </ul>
+  </section>
+  <section class="start-page" *ngIf="!chooseCategoryVisible && !startQuiz && startPage">
+    <p class="back" title="Go back to categories." (click)="startPage=false; chooseCategoryVisible=true; clearQuestionsAndAnswers();">&#x2B05;</p>
+    <button class="action-button start-button" (click)="startQuiz=true;">Start Quiz about <b>{{ category.name }}</b>
+    </button>
+  </section>
+  <section class="quiz" *ngIf="startQuiz">
+    <p class="back" title="Go back to start screen." (click)="startQuiz=false; startPage=true;">&#x2B05;</p>
+    <h2>Quiz</h2>
+    <div class="quiz-text">
+      <div *ngIf="loadingData" class="spinning-for-data"><span>Waiting for quiz.</span></div>
+      <h3>{{ question.question }}</h3>
+      <ul>
+        <li *ngFor="let _answer of answers" class="answer-button">
+          <span>{{_answer.answer}}</span>
+        </li>
+      </ul>
+    </div>
+  </section>
+</main>

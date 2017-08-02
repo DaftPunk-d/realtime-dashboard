@@ -80,7 +80,7 @@ section {
     border-radius: 4px;
     padding: 10px;
     margin: 10px 0;
-    &:hover{
+    &:hover {
       background-color: #fcfcfc;
     }
   }
@@ -89,12 +89,12 @@ section {
     background-color: green !important;
   }
 
-  > .add-answer{
+  > .add-answer {
     background-color: #666;
     color: white;
     padding: 20px 30px !important;
 
-    > div > span{
+    > div > span {
       color: white;
     }
 
@@ -103,7 +103,6 @@ section {
     }
   }
 }
-
 
 .delete-icon {
   z-index: 5000;
@@ -122,7 +121,7 @@ section {
   }
 }
 
-.selected-question{
+.selected-question {
   background-color: #dcdcdc !important;
 }
 
@@ -284,5 +283,92 @@ app-distribution-chart {
 
 .datatable-body-cell {
   font-size: 14px !important;
+}
+
+/*STARTQUIZ*/
+
+.back {
+  font-family: SSGizmo;
+  margin: 20px;
+  position: absolute;
+  font-size: 30px;
+  top: 1vh;
+  left: 1vh;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.choose-category {
+  text-align: center;
+}
+
+.start-page, .quiz {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
+.spinning-for-data {
+  color: #666;
+  background-image: url('https://n2ps.storied.co/skins/v2/img/v2/settings_preloader.gif');
+  background-size: 2rem;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 10px;
+
+  > span{
+    display: block;
+    text-align: center;
+    font-size: 18px;
+    color: #666;
+    margin-top:75px;
+  }
+}
+
+.quiz {
+  > h2 {
+    position: absolute;
+    margin: 0;
+    top: 5vh;
+    font-size: 40px;
+    font-weight: bold;
+  }
+}
+
+.quiz-text {
+  > ul > li {
+    display: inline-block;
+
+    &:hover {
+      background-color: #afadaf;
+      color: #666;
+    }
+  }
+
+  > h3 {
+    text-align: center;
+    margin: 50px 0;
+    font-size: 22px;
+  }
+}
+
+.canvas-quiz {
+  position: relative;
+  display: block;
+  width: 66%;
+  height: 80vh;
+  border: 1px #666 solid;
+  margin: 20px auto;
+  border-radius: 4px;
+}
+
+b {
+  font-weight: bold;
 }
 
