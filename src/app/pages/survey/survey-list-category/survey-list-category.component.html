@@ -1,32 +1,50 @@
 <p class="admin">Are you <a routerLink="/admin" routerLinkActive="active">admin</a> of this page?</p>
 <p class="register"><a routerLink="/register" routerLinkActive="active">register</a></p>
 <main class="canvas-quiz">
-  <p class="back" title="Go back to start.">&#x2B05;</p>
   <section class="choose-category" *ngIf="chooseCategoryVisible">
-    <h1>Choose a category</h1>
-    <div *ngIf="loadingCategories" class="spinning-for-data"><span>Waiting for categories.</span></div>
+    <h1>Choose a quiz</h1>
+    <div *ngIf="loadingCategories" class="spinning-for-data"><span>Waiting for quizzes.</span></div>
     <ul class="category-list">
       <li *ngFor="let _category of categories"
           (click)="selectCategory(_category); chooseCategoryVisible=false; startPage=true; loadingData=true;"><span>{{_category.name}}</span>
       </li>
     </ul>
   </section>
-  <section class="start-page" *ngIf="!chooseCategoryVisible && !startQuiz && startPage">
-    <p class="back" title="Go back to categories." (click)="startPage=false; chooseCategoryVisible=true; clearQuestionsAndAnswers();">&#x2B05;</p>
+  <section class="start-page" *ngIf="!chooseCategoryVisible && !startQuiz && startPage && !quizCompleted">
+    <p class="back" title="Go back to quizzes."
+       (click)="startPage=false; chooseCategoryVisible=true; clearQuestionsAndAnswers();">&#x2B05;</p>
     <button class="action-button start-button" (click)="startQuiz=true;">Start Quiz about <b>{{ category.name }}</b>
     </button>
   </section>
-  <section class="quiz" *ngIf="startQuiz">
+  <section class="quiz" *ngIf="startQuiz && !quizCompleted">
     <p class="back" title="Go back to start screen." (click)="startQuiz=false; startPage=true;">&#x2B05;</p>
     <h2>Quiz</h2>
     <div class="quiz-text">
       <div *ngIf="loadingData" class="spinning-for-data"><span>Waiting for quiz.</span></div>
       <h3>{{ question.question }}</h3>
       <ul>
-        <li *ngFor="let _answer of answers" class="answer-button">
+        <li *ngFor="let _answer of answers" class="answer-button"
+            (click)="validateAnswer(_answer, question); showValidation=true;">
           <span>{{_answer.answer}}</span>
         </li>
       </ul>
+      <div *ngIf="showValidation" class="validation-boxes">
+        <span class="correct-button a-btn" *ngIf="isCorrect">Correct answer!</span>
+        <span class="wrong-button a-btn" *ngIf="!isCorrect">Wrong answer!</span>
+      </div>
+    </div>
+  </section>
+  <section class="quiz" *ngIf="quizCompleted">
+    <h2>You completed the Quiz!</h2>
+    <div class="quiz-text">
+      <div *ngIf="loadingData" class="spinning-for-data"><span>Waiting for results.</span></div>
+      <h3>Your score is: {{ score }}</h3>
+      <div>
+        <ul>
+          <li class="action-button finish-button" (click)="retake()">Try this quiz again</li>
+          <li class="action-button finish-button" (click)="tryAnother()">Choose another quiz</li>
+        </ul>
+      </div>
     </div>
   </section>
 </main>

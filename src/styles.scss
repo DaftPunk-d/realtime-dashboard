@@ -372,3 +372,30 @@ b {
   font-weight: bold;
 }
 
+.a-btn{
+  padding: 10px;
+  background-color: rgba(238, 236, 235, 0.53);;
+  border-radius: 10px;
+  border: 5px solid #1f1f1f;
+}
+
+.validation-boxes{
+  text-align: center;
+  margin-top: 50px;
+}
+
+.correct-button{
+  border-color: #0B7500;
+}
+
+.wrong-button{
+  border-color: #ad0000;
+}
+
+.finish-button{
+  font-size: 25px;
+  margin: 20px;
+  padding: 35px;
+  line-height: 40px;
+}
+
