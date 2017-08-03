@@ -1,16 +1,15 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
 import * as request from 'request';
-import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/observable/of';
-import * as moment from 'moment';
-import * as _ from 'lodash';
 
+interface IUserInfo {
+  username: string;
+  email: string;
+  password: string;
+}
 @Injectable()
 export class ApiService {
 
-  private userId = 'R0MgwXPJnXPv3mq7';
 
   public getCategories(): Promise<any[]> {
     const getCatsUrl = `${environment.dataUrl}categories`;
@@ -38,12 +37,12 @@ export class ApiService {
     });
   }
 
-  public addUser(user: any): Promise<void> {
-    return new Promise<void>((resolve, reject) => {
-      const addCatUrl = `${environment.dataUrl}register`;
+  public addUser(users: IUserInfo): Promise<IUserInfo> {
+    return new Promise<IUserInfo>((resolve, reject) => {
+      const addUserUrl = `${environment.dataUrl}register`;
       request.post({
-        url: addCatUrl,
-        form: {'user': user}
+        url: addUserUrl,
+        form: users
       }, (error, response, body) => {
         if (error) {
           reject(error);

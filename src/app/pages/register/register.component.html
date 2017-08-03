@@ -13,18 +13,20 @@
     <form action="/register" method="post">
       <div class="form-group">
         <label>Username</label>
-        <input type="text" class="form-control" name="username">
+        <input #username type="text" class="form-control" name="username" required>
       </div>
       <div class="form-group">
         <label>Email</label>
-        <input type="text" class="form-control" name="email">
+        <input #email type="text" class="form-control" name="email" required>
       </div>
       <div class="form-group">
         <label>Password</label>
-        <input type="password" class="form-control" name="password">
+        <input #password type="password" class="form-control" name="password" required>
       </div>
-
-      <button type="submit" class="btn btn-warning btn-lg">Signup</button>
+      <div class="action-button add-button"
+           (click)="onSubmit(username.value, email.value, password.value)">
+        <span class="create-icon ss-icon">💾</span><span class="button-label">Register</span>
+      </div>
     </form>
 
     <hr>
