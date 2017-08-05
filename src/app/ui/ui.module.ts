@@ -11,7 +11,7 @@ import { LoginComponent } from '../pages/login/login.component';
 
 
 const appRoutes: Routes = [
-  {path: '', redirectTo: '/quiz', pathMatch: 'full'},
+  {path: '', redirectTo: '/login', pathMatch: 'full'},
 
   {path: 'quiz', component: SurveyListCategoryComponent},
 

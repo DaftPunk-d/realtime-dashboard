@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { ApiService } from '../../core/api.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
+import { AuthenticationService } from '../../core/authentication.service';
 
 @Component({
   selector: 'app-login',
@@ -8,24 +9,35 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-  @Input() user: any;
   @Output() createdOrUpdated = new EventEmitter();
+  model: any = {};
+  returnUrl: string;
 
-  constructor(private apiService: ApiService, private router: Router) { }
+  constructor(
+              private route: ActivatedRoute,
+              private apiService: ApiService,
+              private router: Router,
+              private authenticationService: AuthenticationService) { }
 
   ngOnInit() {
+    this.authenticationService.logout();
 
+    // get return url from route parameters or default to '/'
+    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
   }
 
-  onSubmit(user: any) {
+  login(user: any) {
 
-    this.apiService.addUser(this.user).then((user: any) => {
-      this.createdOrUpdated.emit({name: this.user});
-    })
-      .catch((err) => {
-        console.error('error creating a category', err);
-      });
+  //login
 
+    this.authenticationService.login(this.model.email, this.model.password)
+      .subscribe(
+        data => {
+          this.router.navigate([this.returnUrl]);
+        },
+        error => {
+          //throw error
+        });
   }
 
 }

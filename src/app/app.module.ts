@@ -16,9 +16,11 @@ import { AdminCreateAnswerComponent } from './pages/admin/admin-create-answer/ad
 import { SurveyListCategoryComponent } from './pages/survey/survey-list-category/survey-list-category.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { LoginComponent } from './pages/login/login.component';
+import { AuthenticationService } from './core/authentication.service';
+import { UserService } from './core/user.service';
 
 const appRoutes: Routes = [
-  { path: '',          redirectTo: '/quiz', pathMatch: 'full' }
+  { path: '',          redirectTo: '/login', pathMatch: 'full' }
 ];
 @NgModule({
   declarations: [
@@ -40,7 +42,7 @@ const appRoutes: Routes = [
     UiModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [ApiService],
+  providers: [ApiService, AuthenticationService, UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
