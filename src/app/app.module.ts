@@ -16,8 +16,6 @@ import { AdminCreateAnswerComponent } from './pages/admin/admin-create-answer/ad
 import { SurveyListCategoryComponent } from './pages/survey/survey-list-category/survey-list-category.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { LoginComponent } from './pages/login/login.component';
-import { AuthenticationService } from './core/authentication.service';
-import { UserService } from './core/user.service';
 
 const appRoutes: Routes = [
   { path: '',          redirectTo: '/quiz', pathMatch: 'full' }
@@ -42,7 +40,7 @@ const appRoutes: Routes = [
     UiModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [ApiService, AuthenticationService, UserService],
+  providers: [ApiService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
