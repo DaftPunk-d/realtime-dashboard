@@ -2,11 +2,10 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { enableProdMode } from '@angular/core';
 import { ApiService } from '../../../core/api.service';
 import * as _ from 'lodash';
+import { Cookie } from 'ng2-cookies/ng2-cookies';
 import { Observable } from 'rxjs/Observable';
 import { environment } from '../../../../environments/environment';
-import * as moment from 'moment';
-import * as $ from 'jquery';
-import { tryParse } from 'selenium-webdriver/http';
+import { Router } from '@angular/router';
 
 enableProdMode();
 
@@ -40,7 +39,18 @@ export class AdminListCategoryComponent implements OnInit {
   createCategoryModalVisible: boolean;
 
 
-  constructor(private apiService: ApiService) {
+  constructor(private apiService: ApiService, private router: Router) {
+      const sessionID = Cookie.get('sessionID');
+      if(_.isNull(sessionID)){
+        this.router.navigate(['/login']);
+      } else {
+        const verifyAdmin = atob(sessionID).split('//')[1];
+        if(verifyAdmin === 'admin'){
+          //admin
+        }else{
+          this.router.navigate(['/quiz'])
+        }
+      }
 
   }
 
@@ -57,6 +67,11 @@ export class AdminListCategoryComponent implements OnInit {
       .catch((err) => {
         console.error('Failed to get categories', err);
       });
+  }
+
+  logout(){
+    Cookie.delete('sessionID');
+    this.router.navigate(['/quiz']);
   }
 
   handleCreatedOrUpdated(category?: any) {

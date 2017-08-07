@@ -208,4 +208,25 @@ export class ApiService {
       });
     });
   }
+
+  public verivyCreds(key: string): Promise<void> {
+    return new Promise<void>((resolve, reject) => {
+      const verivyUrl = `${environment.dataUrl}auth`;
+      request.post({
+        url: verivyUrl,
+        form: {'e': key}
+      }, (error, response, body) => {
+        if (error) {
+          reject(error);
+          return;
+        }
+        if (response.statusCode >= 400) {
+          console.error(response.statusMessage, response);
+          reject(response);
+          return;
+        }
+        resolve(body);
+      });
+    });
+  }
 }

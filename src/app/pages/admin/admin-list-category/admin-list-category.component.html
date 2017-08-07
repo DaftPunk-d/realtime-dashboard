@@ -16,6 +16,9 @@
   </ul>
 </div>
 <section>
+  <button (click)="logout()">Logout as admin</button>
+</section>
+<section>
   <h2>Questions</h2>
   <ul class="object-list question-list">
     <li *ngFor="let _question of questions" [ngClass]="{'selected-question': _question?.question === question?.question }"

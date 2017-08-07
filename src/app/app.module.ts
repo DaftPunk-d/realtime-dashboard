@@ -20,7 +20,7 @@ import { AuthenticationService } from './core/authentication.service';
 import { UserService } from './core/user.service';
 
 const appRoutes: Routes = [
-  { path: '',          redirectTo: '/login', pathMatch: 'full' }
+  { path: '',          redirectTo: '/quiz', pathMatch: 'full' }
 ];
 @NgModule({
   declarations: [
