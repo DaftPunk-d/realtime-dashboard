@@ -16,7 +16,6 @@ branches:
 # Install all dependencies.
 install:
   - npm set progress=false
-  - npm install -g @angular/cli@1.0.0-rc.2
   - npm install
 
 # the actual build script. Compiles our app into a dist folder.
