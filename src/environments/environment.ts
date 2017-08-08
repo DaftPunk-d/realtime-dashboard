@@ -5,5 +5,6 @@
 
 export const environment = {
   production: false,
-  dataUrl: 'http://localhost:9999/',
+  dataUrl_: 'http://localhost:9999/',
+  dataUrl: 'https://quizmaster-service.herokuapp.com/'
 };
