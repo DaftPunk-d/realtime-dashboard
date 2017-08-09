@@ -21,10 +21,11 @@ export class RegisterComponent implements OnInit {
 
 
     this.onSubmit = (username, email, password) => {
+      this.router.navigate(["/login"]);
       apiService.addUser({username:username, email:email, password: password})
         .then(() => {
-          this.createdOrUpdated.emit();
           this.router.navigate(["/login"]);
+          this.createdOrUpdated.emit();
         })
         .catch((err) => {
           console.error('Failed to register user', err);
