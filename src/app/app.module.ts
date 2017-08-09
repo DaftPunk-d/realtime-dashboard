@@ -15,6 +15,7 @@ import { AdminCreateAnswerComponent } from './pages/admin/admin-create-answer/ad
 import { SurveyListCategoryComponent } from './pages/survey/survey-list-category/survey-list-category.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { LoginComponent } from './pages/login/login.component';
+import { CapitalizePipe } from './pipes/capitalize.pipe';
 
 const appRoutes: Routes = [
   { path: '',          redirectTo: '/quiz', pathMatch: 'full' }
@@ -29,7 +30,8 @@ const appRoutes: Routes = [
     AdminCreateAnswerComponent,
     SurveyListCategoryComponent,
     RegisterComponent,
-    LoginComponent
+    LoginComponent,
+    CapitalizePipe
   ],
   imports: [
     BrowserModule,

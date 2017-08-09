@@ -1,11 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../../../core/api.service';
 import * as _ from 'lodash';
+import { Router } from '@angular/router';
+import { Cookie } from 'ng2-cookies/ng2-cookies';
+import { CapitalizePipe } from '../../../pipes/capitalize.pipe';
 
 @Component({
   selector: 'app-survey-list-category',
   templateUrl: './survey-list-category.component.html',
-  styleUrls: ['./survey-list-category.component.scss']
+  styleUrls: ['./survey-list-category.component.scss'],
+  providers: [CapitalizePipe]
 })
 export class SurveyListCategoryComponent implements OnInit {
 
@@ -19,6 +23,8 @@ export class SurveyListCategoryComponent implements OnInit {
   isCorrect = false;
   showValidation = false;
   score: number = 0;
+  user: string;
+  showLogout = false;
 
 
   chooseCategoryVisible = true;
@@ -30,7 +36,16 @@ export class SurveyListCategoryComponent implements OnInit {
   loadingCategories = false;
 
 
-  constructor(private apiService: ApiService) {
+  constructor(private apiService: ApiService, private router: Router) {
+    const sessionID = Cookie.get('sessionID');
+    if (_.isNull(sessionID)) {
+      // this.router.navigate(['/login']);
+    } else {
+      const verifyUser = atob(sessionID).split('//')[1];
+      if(verifyUser){
+        this.user = verifyUser;
+      }
+    }
   }
 
   ngOnInit() {
@@ -47,6 +62,11 @@ export class SurveyListCategoryComponent implements OnInit {
       .catch((err) => {
         console.error('Failed to get categories', err);
       });
+  }
+
+  logout(){
+    Cookie.delete('sessionID');
+    this.router.navigate(['/login']);
   }
 
   selectCategory(category) {
@@ -106,6 +126,15 @@ export class SurveyListCategoryComponent implements OnInit {
     } else {
       this.startQuiz = false;
       this.quizCompleted = true;
+      this.storeQuizResults(this.score);
+    }
+  }
+
+  storeQuizResults(score: number){
+    if(score > 0){
+      this.apiService.storePoints(score, this.user).then((totalScore) => {
+        console.log(totalScore);
+      })
     }
   }
 

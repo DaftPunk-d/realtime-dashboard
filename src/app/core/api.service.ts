@@ -229,4 +229,25 @@ export class ApiService {
       });
     });
   }
+
+  public storePoints(score: number, username: string): Promise<void> {
+    return new Promise<void>((resolve, reject) => {
+      const verivyUrl = `${environment.dataUrl}store`;
+      request.put({
+        url: verivyUrl,
+        form: {'s': score, 'u': username}
+      }, (error, response, body) => {
+        if (error) {
+          reject(error);
+          return;
+        }
+        if (response.statusCode >= 400) {
+          console.error(response.statusMessage, response);
+          reject(response);
+          return;
+        }
+        resolve(body);
+      });
+    });
+  }
 }

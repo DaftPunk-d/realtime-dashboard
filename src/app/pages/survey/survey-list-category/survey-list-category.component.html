@@ -1,6 +1,23 @@
-<p class="admin">Are you <a routerLink="/admin" routerLinkActive="active">admin</a> of this page?</p>
-<span class="register ss-icon">💾</span><span class="button-label"><a routerLink="/register" routerLinkActive="active">Register</a></span>
-<p class="login"><a routerLink="/login" routerLinkActive="active">Login</a></p>
+<div class="user-details">
+  <span class="admin">Are you <a routerLink="/admin" routerLinkActive="active">admin</a> of this page?</span>
+  <div class="login-register" *ngIf="!user" >
+    <a class="register login-register-button" routerLink="/register" routerLinkActive="active">
+    <span class="register login-register-button"><span class="register ss-icon">🔑</span><span
+      class="button-label">Register</span></span></a>
+    <a class="login login-register-button" routerLink="/login" routerLinkActive="active">
+    <span class="login login-register-button"><span class="register ss-icon">🔑</span><span
+      class="button-label">Login</span></span></a>
+      <div class="login-to-points">Login to gain points!</div>
+  </div>
+  <div class="user-logged" *ngIf="user" (click)="showLogout = showLogout ? false : true">
+    <span class="user-logged-username">Welcome, {{ user }}!</span>
+    <span class="user-logged-letter">{{ user | capitalize }}</span>
+  </div>
+  <div class="user-logged-logout" *ngIf="showLogout">
+    <span (click)="logout()"><span class="ss-icon">&#xEE02;</span>Logout</span>
+  </div>
+
+</div>
 <main class="canvas-quiz">
   <section class="choose-category" *ngIf="chooseCategoryVisible">
     <h1>Choose a quiz: </h1>

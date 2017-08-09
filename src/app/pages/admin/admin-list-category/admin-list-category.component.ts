@@ -40,18 +40,17 @@ export class AdminListCategoryComponent implements OnInit {
 
 
   constructor(private apiService: ApiService, private router: Router) {
-      const sessionID = Cookie.get('sessionID');
-      if(_.isNull(sessionID)){
-        this.router.navigate(['/login']);
+    const sessionID = Cookie.get('sessionID');
+    if (_.isNull(sessionID)) {
+      this.router.navigate(['/login']);
+    } else {
+      const verifyAdmin = atob(sessionID).split('//')[1];
+      if (verifyAdmin === 'admin') {
+        //admin
       } else {
-        const verifyAdmin = atob(sessionID).split('//')[1];
-        if(verifyAdmin === 'admin'){
-          //admin
-        }else{
-          this.router.navigate(['/quiz'])
-        }
+        this.router.navigate(['/quiz'])
       }
-
+    }
   }
 
   ngOnInit() {

@@ -16,7 +16,13 @@ export class LoginComponent implements OnInit {
   constructor(
               private route: ActivatedRoute,
               private apiService: ApiService,
-              private router: Router) { }
+              private router: Router) {
+
+    const sessionID = Cookie.get('sessionID');
+    if (sessionID) {
+      this.router.navigate(['/quiz']);
+    }
+  }
 
   ngOnInit() {
   }
@@ -30,29 +36,25 @@ export class LoginComponent implements OnInit {
 
     this.apiService.verivyCreds(key).then((body: any) => {
       const response = JSON.parse(body).response;
-      const resultSessionID = btoa(atob(response).split('//')[0]);
-      if(resultSessionID === key){
-        //if user is admin
+      const checkAdmin = atob(btoa(atob(response).split('//')[1]));
+      // const resultSessionID = btoa(atob(response).split('//')[0]);
+      if(checkAdmin !== 'admin'){
+        Cookie.set('sessionID', response);
+        this.router.navigate(['/quiz'])
+      }else{
         Cookie.set('sessionID', response);
         this.router.navigate(['/admin']);
-      } else {
-        //if there is something wrong (wrong pass, user not exist)
-        this.router.navigate(['/quiz'])
       }
+      // if(resultSessionID === key){
+      //   //if user is admin
+      //   Cookie.set('sessionID', response);
+      //   this.router.navigate(['/admin']);
+      // } else {
+      //   //if there is something wrong (wrong pass, user not exist)
+      //   this.router.navigate(['/quiz'])
+      // }
     });
-    /*
-     if user creds are admin redirect to admin page
-     */
-  //login
 
-    // this.authenticationService.login(this.model.email, this.model.password)
-    //   .subscribe(
-    //     data => {
-    //       this.router.navigate([this.returnUrl]);
-    //     },
-    //     error => {
-    //       //throw error
-    //     });
   }
 
 }
