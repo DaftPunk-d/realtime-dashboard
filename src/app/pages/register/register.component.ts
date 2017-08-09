@@ -19,10 +19,12 @@ export class RegisterComponent implements OnInit {
 
   constructor(private apiService: ApiService, private router: Router) {
 
+
     this.onSubmit = (username, email, password) => {
       apiService.addUser({username:username, email:email, password: password})
         .then(() => {
           this.createdOrUpdated.emit();
+          this.router.navigate(["/login"]);
         })
         .catch((err) => {
           console.error('Failed to register user', err);
