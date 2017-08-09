@@ -3,7 +3,7 @@
 <p class="login"><a routerLink="/login" routerLinkActive="active">Login</a></p>
 <main class="canvas-quiz">
   <section class="choose-category" *ngIf="chooseCategoryVisible">
-    <h1>Choose a quiz</h1>
+    <h1>Choose a quiz: </h1>
     <div *ngIf="loadingCategories" class="spinning-for-data"><span>Waiting for quizzes.</span></div>
     <ul class="category-list">
       <li *ngFor="let _category of categories"

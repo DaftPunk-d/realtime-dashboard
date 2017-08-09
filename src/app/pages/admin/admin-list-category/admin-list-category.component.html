@@ -16,7 +16,7 @@
   </ul>
 </div>
 <section>
-  <button (click)="logout()">Logout as admin</button>
+  <button class="logout" (click)="logout()">Logout as admin <span class="ss-icon">&#xEE02;</span></button>
 </section>
 <section>
   <h2>Questions</h2>
@@ -24,7 +24,7 @@
     <li *ngFor="let _question of questions" [ngClass]="{'selected-question': _question?.question === question?.question }"
         (click)="selectQuestion(_question)"><span>{{_question?.question}}</span>
       <div class="delete-row" (click)="deleteQuestion(_question); $event.stopPropagation();" title="Delete this question">
-        <span class="delete-icon ss-icon">&#xE0D0;</span>
+
       </div>
     </li>
     <li class="add-question">

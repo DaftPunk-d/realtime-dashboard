@@ -172,7 +172,13 @@ li {
 .data:hover {
   background-color: #E5E5E5;
 }
-
+p.admin {
+  margin-bottom: 25px;
+}
+p.login{
+  margin-top: 25px;
+  margin-left: 16px;
+}
 .nav_icon {
   font-family: "SSGizmo" !important;
   font-style: normal;
@@ -189,4 +195,7 @@ li {
 .ss-plus {
   font-size: 22px;
 }
-
+.logout{
+  font-size: 20px;
+  margin-top: 15px;
+}
