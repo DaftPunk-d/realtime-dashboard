@@ -9,10 +9,10 @@
       <div class="login-to-points">Login to gain points!</div>
   </div>
   <div class="login-register" *ngIf="user">
-    <a class="login login-register-button" (click)="showScoreboard=false; quizCompleted=false; chooseCategoryVisible=true; startQuiz=false; startPage=false;">
+    <a class="login login-register-button" (click)="showScoreboard=false; showChat=false; quizCompleted=false; chooseCategoryVisible=true; startQuiz=false; startPage=false;">
     <span class="login login-register-button"><span class="chat ss-icon"></span><span
       class="button-label">Quiz</span></span></a>
-    <a class="login login-register-button" routerLink="/chat" routerLinkActive="active">
+    <a class="login login-register-button" (click)="showScoreboard=false; showChat=true; quizCompleted=false; chooseCategoryVisible=false; startQuiz=false; startPage=false;">
     <span class="login login-register-button"><span class="chat ss-icon">💬</span><span
       class="button-label">Chat</span></span></a>
     <a class="login login-register-button" (click)="showScoreboard=true; quizCompleted=false; chooseCategoryVisible=false; startQuiz=false; startPage=false;">
@@ -77,5 +77,8 @@
   </section>
   <section class="quiz" *ngIf="showScoreboard">
     <app-scoreboard></app-scoreboard>
+  </section>
+  <section class="quiz" *ngIf="showChat">
+    <app-chat></app-chat>
   </section>
 </main>
