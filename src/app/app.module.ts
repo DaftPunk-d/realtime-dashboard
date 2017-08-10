@@ -17,6 +17,9 @@ import { RegisterComponent } from './pages/register/register.component';
 import { LoginComponent } from './pages/login/login.component';
 import { ChatComponent } from './pages/chat/chat.component';
 import { CapitalizePipe } from './pipes/capitalize.pipe';
+import { ScoreboardComponent } from './pages/scoreboard/scoreboard.component';
+
+
 const appRoutes: Routes = [
   { path: '',          redirectTo: '/quiz', pathMatch: 'full' }
 ];
@@ -32,7 +35,8 @@ const appRoutes: Routes = [
     RegisterComponent,
     ChatComponent,
     LoginComponent,
-    CapitalizePipe
+    CapitalizePipe,
+    ScoreboardComponent
   ],
   imports: [
     BrowserModule,
