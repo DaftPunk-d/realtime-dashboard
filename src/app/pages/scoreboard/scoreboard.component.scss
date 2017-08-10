@@ -1,0 +1,33 @@
+.scoreboard-list{
+  text-align: center;
+
+  > li{
+    padding: 20px 50px;
+    background-color: #ededed;
+    box-shadow: 0 3px 8px #ccc;
+    margin:5px;
+    line-height: 1px;
+
+    & > span{
+      padding: 0 40px;
+    }
+  }
+}
+
+.scoreboard{
+  text-align: center;
+}
+
+.user{
+  float: left;
+}
+
+.score{
+  float: right;
+}
+
+.number{
+  font-size: 25px;
+  font-weight: bold;
+}
+

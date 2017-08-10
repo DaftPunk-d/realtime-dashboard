@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../../core/api.service';
+import * as _ from 'lodash';
 
 @Component({
   selector: 'app-scoreboard',
@@ -14,7 +15,7 @@ export class ScoreboardComponent implements OnInit {
 
   ngOnInit() {
     this.apiService.getScores().then((scores)=> {
-      this.scores = scores;
+      this.scores = _.orderBy(scores, ['score'], ['desc']);
     });
   }
 
