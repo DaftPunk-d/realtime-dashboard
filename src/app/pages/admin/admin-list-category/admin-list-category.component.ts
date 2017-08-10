@@ -81,15 +81,13 @@ export class AdminListCategoryComponent implements OnInit {
 
 
   handleCreatedOrUpdatedQuestion(question?: any) {
-    window.scrollTo(0, 0);
     if(parseInt(question.categoryId) === this.category.id){
-      this.questions.push(question);
+      this.questions.push({id: this.category.id, question: question.question});
     }
     this.createQuestionModalVisible = false;
   }
 
   handleCreatedOrUpdatedAnswer(answer?: any) {
-    window.scrollTo(0, 0);
     if(!answer.answerId) {
       this.answers.push(answer);
     }else {

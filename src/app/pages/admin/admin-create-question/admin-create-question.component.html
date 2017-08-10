@@ -6,7 +6,7 @@
     <input #label type="text" placeholder="name" name="label" id="label" required>
   </div>
   <div class="feed-field label">
-    <label for="label">Category: </label>
+    <label for="label">Quiz: </label>
     <select #category name="category" id="category">
       <option *ngFor="let category of categories" value="{{ category.id }}" [selected]="category.id === question?.categoryId">
         {{ category.name }}
