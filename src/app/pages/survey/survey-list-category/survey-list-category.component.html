@@ -6,6 +6,9 @@
     <a class="login login-register-button" routerLink="/login" routerLinkActive="active">
     <span class="login login-register-button"><span class="register ss-icon">🔑</span><span
       class="button-label">Login</span></span></a>
+    <a class="login login-register-button" routerLink="/chat" routerLinkActive="active">
+    <span class="login login-register-button"><span class="chat ss-icon">💬</span><span
+      class="button-label">Chat</span></span></a>
       <div class="login-to-points">Login to gain points!</div>
   </div>
   <div class="user-logged" *ngIf="user" (click)="showLogout = showLogout ? false : true">

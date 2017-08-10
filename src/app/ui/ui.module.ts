@@ -7,6 +7,7 @@ import { AdminListCategoryComponent } from '../pages/admin/admin-list-category/a
 import { SurveyListCategoryComponent } from '../pages/survey/survey-list-category/survey-list-category.component';
 import { ModalComponent } from './modal/modal.component';
 import { RegisterComponent } from '../pages/register/register.component';
+import { ChatComponent } from '../pages/chat/chat.component';
 import { LoginComponent } from '../pages/login/login.component';
 
 
@@ -19,7 +20,9 @@ const appRoutes: Routes = [
 
   {path: 'register', component: RegisterComponent},
 
-  {path: 'login', component: LoginComponent}
+  {path: 'login', component: LoginComponent},
+
+  {path: 'chat', component: ChatComponent}
 
 ];
 
