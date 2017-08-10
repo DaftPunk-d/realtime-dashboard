@@ -250,4 +250,9 @@ export class ApiService {
       });
     });
   }
+
+  public getScores(): Promise<any[]> {
+    const getScoresUrl = `${environment.dataUrl}store`;
+    return this.getFromUrl(getScoresUrl);
+  }
 }
