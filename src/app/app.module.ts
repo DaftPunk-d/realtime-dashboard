@@ -17,7 +17,6 @@ import { RegisterComponent } from './pages/register/register.component';
 import { LoginComponent } from './pages/login/login.component';
 import { ChatComponent } from './pages/chat/chat.component';
 import { CapitalizePipe } from './pipes/capitalize.pipe';
-
 const appRoutes: Routes = [
   { path: '',          redirectTo: '/quiz', pathMatch: 'full' }
 ];
@@ -41,7 +40,7 @@ const appRoutes: Routes = [
     ReactiveFormsModule,
     HttpModule,
     UiModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
   ],
   providers: [ApiService],
   bootstrap: [AppComponent]
