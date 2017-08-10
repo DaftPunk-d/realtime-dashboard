@@ -75,8 +75,9 @@ export class AdminListCategoryComponent implements OnInit {
 
   handleCreatedOrUpdated(category?: any) {
     window.scrollTo(0, 0);
-    this.categories.push(category);
+    this.categories.push({id: this.category.id, name: category.name});
     this.createCategoryModalVisible = false;
+    location.reload();
   }
 
 
@@ -112,6 +113,8 @@ export class AdminListCategoryComponent implements OnInit {
   }
 
   selectCategory(category) {
+    this.answers = [];
+    this.questions = [];
     this.category = category;
     const categoryId = this.category.id;
     this.apiService.getQuestionsByCategory(categoryId)
